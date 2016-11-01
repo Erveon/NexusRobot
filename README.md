@@ -1,2 +1,2 @@
 # NexusRobot
-Nexus Twitch bot
+Nexus Gaming Twitch bot
