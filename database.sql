@@ -7,3 +7,6 @@ CREATE TABLE `command_counter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `command_counter` (`command`, `count`) VALUES ('nudes', 0);
+
+ALTER TABLE `command_counter`
+  ADD PRIMARY KEY (`command`);
