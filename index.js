@@ -14,6 +14,7 @@ require('./lib/modules/help');
 require('./lib/modules/poll');
 require('./lib/modules/nudes');
 require('./lib/modules/raffle');
+require('./lib/modules/rosters');
 
 twitch.client.on('chat', function(channel, user, message, self) {
 	let prefix = config.bot.prefix;
