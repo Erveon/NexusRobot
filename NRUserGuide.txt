@@ -1,45 +1,37 @@
-NexusRobot User Guide
+COMMAND LIST
 
-Admin commands:
+//admin setters
+!setbracket //bracket link
+!matcherino setlink //matcherino link
+!matcherino setcode //matcherino code
+!setcasters 
+!setlobby //koth lobby
+!setteams //team names
 
-	!tourneymode (on/off) - enables !bracket/disables !signup (enable when signups have ended)
+!join
+!signup
+!signuplist
+!bracket
 
-	!setcasters caster1 caster2 caster3 - sets casters, can take up to three arguments
+!kothmode
+!tournymode
 
-	!startraffle - starts a raffle that users can enter with !pickme
-	!endraffle - ends raffle entry
-	!drawraffle - picks a random raffle winner
+!startraffle
+!endraffle
+!draw
+!pickme
 
-	!startpoll teamA teamB - starts a user poll with two options
-	!endpoll - ends poll and counts votes
-	!showpoll - shows results of poll
+!poll
+!endpoll
+!pollresults
 
-Mod commands:
+!matcherino
+!discord
+!twitter
+!website
+!patreon
 
-	!ban user - same as mockit, doesn't actually do anything yet
+!casters
+!teams
 
-User commands:
-
-	!signup - tournament signup link
-	!signuplist - tournament entries which will be placed in the bracket
-	!bracket - tournament bracket
-
-	!casters - displays current casters
-
-	!teamA - user vote for teamA (if poll is started)
-	!teamB - user vote for teamB (if poll is started)
-
-	!pickme - user entry into raffle
-
-	!twitter - link
-	!patreon - link
-	!discord - link
-	!website/site - link
-
-	!nudes - u already know
-
-	!help - shows commands
-
-Still to add:
-
-	!nudes - obviously
+!help
