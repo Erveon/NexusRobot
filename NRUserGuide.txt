@@ -33,5 +33,6 @@ COMMAND LIST
 
 !casters
 !teams
+!viewer
 
 !help

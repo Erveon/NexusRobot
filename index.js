@@ -32,6 +32,13 @@ twitch.client.on('chat', function(channel, user, message, self) {
 	commands.execute(command[0], user, params);
 });
 
+twitch.client.on("whisper", function (from, userstate, message, self) {
+    // Don't listen to my own messages..
+    if (self) return;
+
+    // Do your stuff.
+});
+
 twitch.client.on('connected', function(address, port) {
 	twitch.sendMessage("BETA™ has connected!");
 });
