@@ -3,7 +3,7 @@ var config = require('./config/config');
 var twitch = require('./lib/twitch');
 let commands = require('./lib/commands');
 let customs = require('./lib//modules/customs');
-let commandLib = require('./lib/utils/command-library')
+let commandLib = require('./lib/utils/command-library');
 
 twitch.connect();
 
@@ -32,11 +32,14 @@ twitch.client.on('chat', function(channel, user, message, self) {
     });
 
 	let params = command.slice(1, command.length + 1);
+	console.log(customs.removed.indexOf(command[0]) !== -1);
 
-	if (commandLib[command[0]] != undefined) {
-		twitch.sendMessage(commandLib[command]);
+	if (commandLib[command[0]] !== undefined && customs.removed.indexOf(command[0]) !== -1) {
+		console.log("file");
+		twitch.sendMessage(commandLib[command[0]]);
 	}
-	else if (customs.temp_customs[command[0]] != undefined){
+	else if (customs.temp_customs[command[0]] !== undefined){
+		console.log("temp");
 		twitch.sendMessage(customs.temp_customs[command[0]]);
 	}
 	else commands.execute(command[0], user, params);
