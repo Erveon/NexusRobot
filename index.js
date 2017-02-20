@@ -2,8 +2,11 @@ var db = require("./lib/database");
 var config = require('./config/config');
 var twitch = require('./lib/twitch');
 let commands = require('./lib/commands');
+let customs = require('./lib//modules/customs');
 
 twitch.connect();
+
+//console.log(customs.temp_customs);
 
 // enable modules
 require('./lib/modules/casters');
@@ -16,20 +19,25 @@ require('./lib/modules/nudes');
 require('./lib/modules/raffle');
 require('./lib/modules/rosters');
 
+
 twitch.client.on('chat', function(channel, user, message, self) {
 	let prefix = config.bot.prefix;
 	if (!message.startsWith(prefix)) return;
 
 	//passes command into an array of single words
-	let command = message.slice(1, message.length).split(" ");
+	let input = message.slice(1, message.length).split(" ");
 
 	// eliminates extra spaces
-	command = command.filter(function(word){
+	input = input.filter(function(word){
         return word;
     });
 
-	let params = command.slice(1, command.length + 1);
-	commands.execute(command[0], user, params);
+	let params = input.slice(1, input.length + 1);
+
+	if (customs.temp_customs[input[0]] !== undefined){
+		twitch.sendMessage(customs.temp_customs[input[0]]);
+	}
+	else commands.execute(input[0], user, params);
 });
 
 twitch.client.on('connected', function(address, port) {
