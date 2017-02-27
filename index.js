@@ -34,7 +34,7 @@ twitch.client.on('chat', function(channel, user, message, self) {
 
 	let params = input.slice(1, input.length + 1);
 
-	if (customs.temp_customs[input[0]] !== undefined){
+	if (customs.temp_customs[input[0]] !== undefined && user.mod){
 		twitch.sendMessage(customs.temp_customs[input[0]]);
 	}
 	else commands.execute(input[0], user, params);
