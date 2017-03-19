@@ -1,12 +1,11 @@
 var db = require("./lib/database");
 var config = require('./config/config');
 var twitch = require('./lib/twitch');
+
 let commands = require('./lib/commands');
 let customs = require('./lib//modules/customs');
 
 twitch.connect();
-
-//console.log(customs.temp_customs);
 
 // enable modules
 require('./lib/modules/casters');
@@ -34,10 +33,16 @@ twitch.client.on('chat', function(channel, user, message, self) {
 
 	let params = input.slice(1, input.length + 1);
 
-	if (customs.temp_customs[input[0]] !== undefined && user.mod){
-		twitch.sendMessage(customs.temp_customs[input[0]]);
-	}
-	else commands.execute(input[0], user, params);
+	db.checkCommand(input[0], function(exists){
+		if (exists) {
+			db.getCommand(input[0], function(output) {
+				twitch.sendMessage(output);
+			});
+		}
+		else {
+			commands.execute(input[0], user, params);
+		}
+	});
 });
 
 twitch.client.on('connected', function(address, port) {
