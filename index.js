@@ -18,12 +18,15 @@ require('./lib/modules/nudes');
 require('./lib/modules/raffle');
 require('./lib/modules/rosters');
 require('./lib/modules/colors');
+require('./lib/modules/echo');
 
 twitch.client.on('message', function(channel, user, message, self) {
 
+	if (self) return;
 	let prefix = config.bot.prefix;
 
 	if (!message.startsWith(prefix)) return;
+
 
 	//passes command into an array of single words
 	let input = message.slice(1, message.length).split(" ");
