@@ -1,9 +1,10 @@
 var db = require("./lib/database");
 var config = require('./config/config');
 var twitch = require('./lib/twitch');
-
 let commands = require('./lib/commands');
-let customs = require('./lib//modules/customs');
+
+customs = Object.create(null);
+module.exports.customs = customs;
 
 twitch.connect();
 
@@ -17,6 +18,7 @@ require('./lib/modules/poll');
 require('./lib/modules/nudes');
 require('./lib/modules/raffle');
 require('./lib/modules/rosters');
+require('./lib/modules/customs');
 require('./lib/modules/colors');
 require('./lib/modules/echo');
 
@@ -38,20 +40,24 @@ twitch.client.on('message', function(channel, user, message, self) {
 
 	let params = input.slice(1, input.length + 1);
 
-	db.checkCommand(input[0], function(exists){
-		if (exists) {
-			db.getCommand(input[0], function(output) {
-				twitch.sendMessage(output);
-			});
-		}
-		else {
-			//console.log(input[0] + "," + user + "," + params);
-			commands.execute(input[0], user, params);
-		}
-	});
+	if (customs[input[0]]!==undefined) {
+		twitch.sendMessage(customs[input[0]]);
+	}
+	else {
+		commands.execute(input[0], user, params);
+	}
 });
 
 
 twitch.client.on('connected', function(address, port) {
+	
+	db.loadCommands(function(data) {
+		for (var i=0; i<data.length; i++){
+			var com = data[i];
+			customs[com['command_name']] = com['command_output'];
+		}
+	});	
+
 	twitch.sendMessage("BETA™ has connected!");
 });
+
