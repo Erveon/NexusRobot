@@ -17,7 +17,7 @@ require('./lib/modules/poll');
 require('./lib/modules/nudes');
 require('./lib/modules/raffle');
 require('./lib/modules/rosters');
-
+require('./lib/modules/colors');
 
 twitch.client.on('message', function(channel, user, message, self) {
 

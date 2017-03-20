@@ -1,37 +1,69 @@
+FILE STRUCTURE
+
+/root
+	index.js
+	/config
+		config.js
+		config-example.js
+	/lib
+		commands.js
+		database.js
+		twitch.js
+		/modules
+			ban.js
+			casters.js
+			customs.js
+			help.js
+			nudes.js
+			poll.js
+			raffle.js
+			rosters.js
+			signup.js
+			website.js
+		/utils
+			cooldown.js
+	/nodemodules
+	database.sql
+	package.JSON
+	.gitignore
+	NRUserGuide (this document)
+	README.md
+
 COMMAND LIST
 
-//admin setters
-!setbracket //bracket link
-!matcherino setlink //matcherino link
-!matcherino setcode //matcherino code
-!setcasters 
-!setlobby //koth lobby
-!setteams //team names
+[M]	!create <command> <output>
+[M]	!remove <command>
 
-!join
-!signup
-!signuplist
-!bracket
+	!signup/!join
+	!signuplist	
+	!bracket
+[M]	!bracket set <link>
 
-!kothmode
-!tournymode
+	!casters
+[M]	!casters set <args>
 
-!startraffle
-!endraffle
-!draw
-!pickme
+	!teams
+[M]	!teams set <teamA>|<teamB>
 
-!poll
-!endpoll
-!pollresults
+[M]	!poll <polloptions>
+	!<polloptions>
+[M]	!poll end
+[M]	!poll results
 
-!matcherino
-!discord
-!twitter
-!website
-!patreon
+[M]	!raffle start <rafflekey> *optional argument, defaults to "nexus"
+	!<rafflekey>
+[M]	!raffle end
+[M]	!raffle draw
 
-!casters
-!teams
+	!website
+	!discord
+	!patreon
+	!twitter
+[M]	!matcherino set <link> <code>
+	!matcherino
 
-!help
+	!nudes
+	!mynudes
+	!nudemaster
+
+	!help
