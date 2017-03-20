@@ -19,8 +19,10 @@ require('./lib/modules/raffle');
 require('./lib/modules/rosters');
 
 
-twitch.client.on('chat', function(channel, user, message, self) {
+twitch.client.on('message', function(channel, user, message, self) {
+
 	let prefix = config.bot.prefix;
+
 	if (!message.startsWith(prefix)) return;
 
 	//passes command into an array of single words
@@ -40,10 +42,12 @@ twitch.client.on('chat', function(channel, user, message, self) {
 			});
 		}
 		else {
+			//console.log(input[0] + "," + user + "," + params);
 			commands.execute(input[0], user, params);
 		}
 	});
 });
+
 
 twitch.client.on('connected', function(address, port) {
 	twitch.sendMessage("BETA™ has connected!");
