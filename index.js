@@ -42,11 +42,17 @@ twitch.client.on('message', function(channel, user, message, self) {
 
 	let params = input.slice(1, input.length + 1);
 
+	let tag = null;
+	if (params.length>0&&params[params.length-1].startsWith("-")){
+		tag = params[params.length-1].slice(1,params[params.length-1].length);
+		params.pop();
+	}
+
 	if (customs[input[0]]!==undefined) {
 		twitch.sendMessage(customs[input[0]]);
 	}
 	else {
-		commands.execute(input[0], user, params);
+		commands.execute(input[0], user, params, tag);
 	}
 });
 
