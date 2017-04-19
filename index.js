@@ -31,7 +31,7 @@ twitch.client.on('message', function(channel, user, message, self) {
 
 	if (!message.startsWith(prefix)) return;
 
-	//console.log(user);
+
 	//passes command into an array of single words
 	let input = message.slice(1, message.length).split(" ");
 
@@ -68,4 +68,3 @@ twitch.client.on('connected', function(address, port) {
 
 	twitch.sendMessage("BETA™ has connected!");
 });
-
