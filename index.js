@@ -24,7 +24,6 @@ require('./lib/modules/echo');
 
 twitch.client.on('message', function(channel, user, message, self) {
 
-	console.log(user);
 
 	if (self) return;
 	let prefix = config.bot.prefix;
