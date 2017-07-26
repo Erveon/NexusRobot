@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS `nexus_twitch`;
 USE `nexus_twitch`;
 
 CREATE TABLE `nude_counter` (
-  `username` varchar(20) NOT NULL,
+  `username` varchar(40) NOT NULL,
   `count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -15,7 +15,7 @@ ALTER TABLE `nude_counter`
 
 
 CREATE TABLE `custom_commands` (
-	`command_name` varchar(20) NOT NULL,
+	`command_name` varchar(40) NOT NULL,
 	`command_output` varchar(90) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
